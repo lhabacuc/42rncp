@@ -47,7 +47,7 @@ export default async function TitlesLayout({
   const locale = await getRequestLocale();
 
   return (
-    <main className="@container flex grow items-start justify-center p-4 md:p-12 lg:p-24">
+    <main className="@container flex grow items-start justify-center px-4 pt-2 pb-4 md:px-12 md:pt-3 md:pb-12 lg:px-24 lg:pt-4 lg:pb-24">
       <Card className="@max-[1400px]:w-full @min-[1400px]:w-[1400px] bg-card/5 backdrop-blur-sm">
         <CardHeader>
           <CardTitle tag="h1">RNCP</CardTitle>
