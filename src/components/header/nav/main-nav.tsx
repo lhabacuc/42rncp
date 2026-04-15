@@ -4,19 +4,20 @@ import { cn } from "@/lib/utils";
 import type { Session } from "next-auth";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navLinks } from "./links";
+import type { NavLink } from "./links";
 
 export interface MainNavProps {
   session: Session | null;
+  links: NavLink[];
 }
 
-export function MainNav({ session }: MainNavProps) {
+export function MainNav({ session, links }: MainNavProps) {
   const pathname = usePathname();
 
   return (
     <div className="mr-4 hidden md:flex">
       <nav className="flex items-center gap-4 font-medium text-sm lg:gap-6">
-        {navLinks.map((link) => {
+        {links.map((link) => {
           if (link.isProtected && session == null) {
             return null;
           }
