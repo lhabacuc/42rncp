@@ -10,18 +10,21 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import type { AppLocale } from "@/lib/i18n";
 import { Menu } from "lucide-react";
 import type { Session } from "next-auth";
 import Link, { type LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 import * as React from "react";
-import { navLinks } from "./links";
+import type { NavLink } from "./links";
 
 export interface MobileNavProps {
   session: Session | null;
+  links: NavLink[];
+  locale: AppLocale;
 }
 
-export function MobileNav({ session }: MobileNavProps) {
+export function MobileNav({ session, links, locale }: MobileNavProps) {
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -36,11 +39,15 @@ export function MobileNav({ session }: MobileNavProps) {
           className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
           <Menu className="h-6 w-6" />
-          <span className="sr-only">Toggle Menu</span>
+          <span className="sr-only">
+            {locale === "pt" ? "Abrir menu" : "Toggle Menu"}
+          </span>
         </Button>
       </SheetTrigger>
       <SheetHeader className="sr-only">
-        <SheetTitle>Navigation Menu</SheetTitle>
+        <SheetTitle>
+          {locale === "pt" ? "Menu de navegação" : "Navigation Menu"}
+        </SheetTitle>
       </SheetHeader>
       <SheetContent
         side="left"
@@ -53,7 +60,7 @@ export function MobileNav({ session }: MobileNavProps) {
       >
         <ScrollArea className="h-full">
           <div className="flex flex-col divide-y">
-            {navLinks.map((link) => {
+            {links.map((link) => {
               if (link.isProtected && session == null) {
                 return null;
               }
