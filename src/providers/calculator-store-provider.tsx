@@ -5,6 +5,7 @@ import {
   initCalculatorStore,
   type CalculatorStore,
 } from "@/stores/calculator-store";
+import { useFortyTwoStore } from "./forty-two-store-provider";
 import { createContext, useContext, useRef, type ReactNode } from "react";
 import { useStore, type StoreApi } from "zustand";
 
@@ -18,9 +19,15 @@ export interface CalculatorStoreProviderProps {
 export const CalculatorStoreProvider = ({
   children,
 }: CalculatorStoreProviderProps) => {
+  const level = useFortyTwoStore((state) => state.cursus.level);
+  const levels = useFortyTwoStore((state) => state.levels);
+
   const storeRef = useRef<StoreApi<CalculatorStore>>(null);
   if (!storeRef.current) {
-    storeRef.current = createCalculatorStore(initCalculatorStore());
+    storeRef.current = createCalculatorStore(
+      initCalculatorStore({ level, levels }),
+      levels,
+    );
   }
 
   return (
