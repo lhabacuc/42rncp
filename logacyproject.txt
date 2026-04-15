@@ -1,0 +1,39 @@
+Legacy projects
+Our curriculum and projects are constantly evolving. Some projects have become obsolete, and have been replaced or removed.
+Yet, they can still be valid for a RNCP title. Here is a comprehensive list of removed projects that still count for a RNCP title:
+
+RNCP 7 - IA Category
+
+Cow-Neck-TID
+Vic-2-AI
+[DEPRECATED] ML Module 00
+[DEPRECATED] ML Module 01
+[DEPRECATED] ML Module 02
+[DEPRECATED] ML Module 03
+[DEPRECATED] ML Module 04
+[DEPRECATED] Python Module 00
+[DEPRECATED] Python Module 01
+[DEPRECATED] Python Module 02
+[DEPRECATED] Python Module 03
+[DEPRECATED] Python Module 04
+Equivalences from the old curriculum not validated in the current curriculum, in category "Suite"
+
+42sh
+RT
+Doom Nukem
+HumanGL
+KFS-2
+Web categories from RNCP 6 option 1 & 2, and RNCP 7 option 2
+
+deprecated Symfony Piscine
+deprecated Django Piscine
+deprecated RoR Piscine
+Mobile & Object Oriented categories in RNCP 6 options 1 & 2
+
+deprecated Swift-iOS Piscine
+Imperative Programming in RNCP 6 option 2
+
+gbmu
+Unix / Kernel in RNCP 7 option 1
+
+gbmu

@@ -1,0 +1,126 @@
+RNCP 6 certificate
+Each campus of the 42 network can choose to offer the RNCP 6 homologated certificate from 42 Paris to its students.
+You do not have access to it until specific notice from your local staff.
+
+The RNCP 6 certificate is delivered by 42 Paris and approved by the French ministry of labour. It is considered as a 3 years long training in higher education, and often compared to a Bachelor degree. More details on the dedicated page on the 42 website. This page describes how to obtain the certificate within your curriculum. It is also possible to obtain it through the APEL (Accreditation of Prior Experiential Learning) process, if your are fluent in French.
+
+The French public accreditor, France Compétences, delivers accreditations for 1, 3 or 5 years. 42Paris can award the certificate up to 3 years after the accreditation period. The certificate proves the attached skills for a lifetime. We are currently awarding certificates for:
+
+RNCP 36135
+RNCP 39783 which is the renewal of RNCP 36135.
+Obtaining this certificate is on a volunteer basis, and is disconnected from the final 42 certificate you will obtain when you want to become an alumni (after your common core is validated).
+
+To obtain this certificate you will need to choose between 2 options:
+
+Web and mobile application development
+Applicative software development
+This certificate aims a specific job in the labour market and therefore comes with special constraints on your curriculum. When you fulfil all these constraints, you can request the certificate through the local process advertised by your campus.
+
+Pedagogical requirements
+The following describes the requirements for a regular student applying to the certification jury. Conditions may differ in case of apprenticeship or APL (VAE).
+It is possible for an alumni to complete new projects and fulfil RNCP requirements. The theoretical number of XP and level including the new projects will be used.
+
+A specific tool exists in order for you to check automatically the conditions below: https://gcc.42.fr .
+
+For both options, you need to:
+
+Complete the common core.
+Have validated two post-common core group projects.
+Reach the level 17.
+Have attended 10 pedagogical events since you started your cursus (except extern and association events).
+Have at least 2 full-time professional experiences as part of your curriculum (mostly the projects Work Experience I & II, Startup Experience, eventually some apprenticeship projects temporally equivalent - ask your local staff, but no part-time project).
+
+Validate one project in the ""Suite"" (or "series") category:
+(each project's predecessor is indicated into parenthesis, for your information only)
+
+42sh (minishell)
+BADASS (NetPractice)
+DoomNukem  (cub3d)
+Inception Of Things (inception)
+HumanGL  (scop)
+kfs-2     (kfs-1)
+Override (rainfall)
+Pestilence (famine)
+RT (miniRT)
+Total perspective vortex (dslr)
+Then, depending on the chosen option:
+
+Option 1: Web and mobile application development
+
+Web - minimum 15000XP and minimum 2 projects
+
+Piscine Php Symfony​​ (validate last child proj to be count as 1 project, validate all projects to get all XP)
+Piscine Python Django (same as above)
+Piscine Ruby On Rails (same a above)
+Camagru
+Matcha
+Hypertube
+Red Tetris
+Darkly
+h42n42
+Tokenizer
+TokenizeArt
+Music-room
+Mobile - minimum 10000XP and minimum 2 projects
+
+ft_hangouts
+Swifty_companion
+Swifty_proteins
+Music room
+Piscine Mobile (validate last child proj to be count as 1 project, validate all projects to get all XP)
+Option 2: Applicative software development
+
+Object Oriented Programming - minimum 10000XP and minimum 2 projects
+
+Bomberman
+Nibbler
+Piscine Php Symfony​​ (validate last child proj to be count as 1 project, validate all projects to get all XP)
+Piscine Python Django (same as above)
+Piscine Ruby On Rails (same as above)
+Piscine Mobile (same as above)
+Piscine Object (same as above)
+Camagru
+Matcha
+Hypertube
+Red Tetris
+Darkly
+H42n42
+ft_hangouts
+Swifty_companion
+Swifty_proteins
+Avaj launcher
+Swingy
+fix-me
+Functional programming - minimum 10000XP and minimum 2 projects
+
+Piscine OCaml (validate last proj to be count as 1 project, validate all projects to get all XP)
+ft_turing
+ft_ality
+h42n42
+Imperative programming - minimum 10000XP and minimum 2 projects
+
+libasm
+zappy
+ft_linux
+little penguin
+taskmaster
+strace
+malloc
+Matt Daemon
+nm
+lem_ipc
+kfs-1
+kfs-2
+ft_malcolm
+ft_ssl_md5
+Darkly
+Snowcrash
+Rainfall
+Override
+Boot2root
+Ft_Shield
+Woody Woodpacker
+Famine
+Pestilence
+ft_select
+ft_script

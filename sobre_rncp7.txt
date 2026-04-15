@@ -1,0 +1,127 @@
+RNCP 7 certificate
+Each campus of the 42 network can choose to offer the RNCP 7 homologated certificate from 42 Paris to its students.
+You do not have access to it until specific notice from your local staff.
+
+The RNCP 7 certificate is delivered by 42 Paris and approved by the French ministry of labour. It is considered as a 5 years long training in higher education, and often compared to a Master degree. More details on the dedicated page on the 42 website. This page describes how to obtain the certificate within your curriculum. It is also possible to obtain it through the APEL (Accreditation of Prior Experiential Learning) process, if your are fluent in French.
+
+The French public accreditor, France Compétences, delivers accreditations for 1, 3 or 5 years. 42Paris can award the certificate up to 3 years after the accreditation period. The certificate proves the attached skills for a lifetime. We are currently awarding certificates for:
+
+RNCP 36137
+RNCP 39774 which is the renewal of RNCP 36137.
+Obtaining this certificate is on a volunteer basis, and is disconnected from the final 42 certificate you will obtain when you want to become an alumni (after your common core is validated).
+
+To obtain this certificate you will need to choose between 2 options:
+
+Network Information Systems Architecture
+Database architecture and data
+This certificate aims a specific job in the labour market and therefore comes with special constraints on your curriculum. When you fulfil all these constraints, you can request the certificate through the local process advertised by your campus.
+
+Pedagogical requirements
+The following describes the requirements for a regular student applying to the certification jury. Conditions may differ in case of apprenticeship or APL (VAE).
+It is possible for an alumni to complete new projects and fulfil RNCP requirements. The theoretical number of XP and level including the new projects will be used.
+
+A specific tool exists in order for you to check automatically the conditions below: https://gcc.42.fr .
+
+For both options, you need to:
+
+Complete the common core.
+Have validated two post-common core group projects.
+Reach the level 21.
+Have attended 15 pedagogical events since you started your cursus (except extern and association events).
+Have at least 2 full-time professional experiences as part of your curriculum (mostly the projects Work Experience I & II, Startup Experience, eventually some apprenticeship project temporally equivalent - ask your local staff, but no part-time project).
+
+Validate one project in the ""Suite"" (or "series") category:
+(each project's predecessor is indicated into parenthesis, for your information only)
+
+42sh (minishell)
+BADASS (NetPractice)
+DoomNukem (cub3d)
+Inception Of Things (inception)
+HumanGL (scop)
+kfs-2 (kfs-1)
+Override (rainfall)
+Pestilence (famine)
+RT (miniRT)
+Total perspective vortex (dslr)
+Then, depending on the chosen option:
+
+Option 1: Network Information Systems Architecture
+
+Unix/Kernel - minimum 30000XP and minimum 2 projects.
+
+libasm
+zappy
+ft_linux
+little penguin
+taskmaster
+strace
+malloc
+Matt Daemon
+nm
+lem_ipc
+KFS 1-10 (doing all of them is not mandatory)
+ft_script
+ft_select
+System administration - minimum 50000XP and 3 projects.
+
+cloud-1
+BADASS
+Inception Of Things
+taskmaster
+ft_ping
+ft_traceroute
+ft_nmap
+Active Discovery
+Automatic Directory
+Administrative Directory
+Accessible Directory
+Security - minimum 50000XP and 3 projects.
+
+ft_malcolm
+ft_ssl_md5
+Darkly
+Snowcrash
+Rainfall
+Override
+boot2root
+ft_shield
+Woody Woodpacker
+Famine
+Pestilence
+Piscine Cybersecurity ​​ (validate last child proj to be count as 1 project, validate all projects to get all XP)
+UnleashTheBox
+Active Connect
+MicroForensX
+ActiveTechTales
+Option 2: Database architecture and data
+
+Web - Database - minimum 50000XP and minimum 2 projects.
+
+Piscine PHP Symfony​​ (validate last child proj to be count as 1 project, validate all projects to get all XP)
+Piscine python Django (same as above)
+Piscine Ruby on Rails (same as above)
+Camagru
+Matcha
+Hypertube
+Red Tetris
+Darkly
+h42n42
+Tokenizer
+TokenizeArt
+Music-room
+Artificial Intelligence - minimum 70000XP and minimum 3 projects.
+
+[DEPRECATED]Piscine Machine Learning​​ (validate last child proj to be count as 1 project, validate all projects to get all XP)
+Piscine Python for Data Science (same as above)
+Piscine Data Science (same as above)
+Linear regression
+DSLR
+Multi layer perceptron
+Gomoku
+Total perspective vortex
+Expert system
+Krpsim
+Matrix
+Ready set boole
+Leaffliction
+Learn2Slither

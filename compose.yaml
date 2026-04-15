@@ -15,14 +15,8 @@ services:
             - node_modules
         - action: rebuild
           path: package.json
-    environment:
-      VERCEL_ENV: "development"
-      AUTH_SECRET: "${AUTH_SECRET}"
-      AUTH_42_SCHOOL_ID: "${AUTH_42_SCHOOL_ID}"
-      AUTH_42_SCHOOL_SECRET: "${AUTH_42_SCHOOL_SECRET}"
-      KV_REST_API_URL: "${KV_REST_API_URL}"
-      KV_REST_API_TOKEN: "${KV_REST_API_TOKEN}"
-
+    env_file: .env
+    
   redis:
     image: redis
 
