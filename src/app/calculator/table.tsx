@@ -1,6 +1,7 @@
 "use client";
 
 import { Table } from "@/components/ui/table";
+import type { AppLocale } from "@/lib/i18n";
 import { CalculatorStoreProvider } from "@/providers/calculator-store-provider";
 import { useCalculatorStore } from "@/providers/calculator-store-provider";
 import {
@@ -11,7 +12,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
-import { columns } from "./(table)/table-columns";
+import { getColumns } from "./(table)/table-columns";
 import { DataTableBody } from "./(table)/table-body";
 import { TableAction } from "./(table)/table-actions";
 import { DataTableHeader, DataTableFooter } from "./(table)/table-decoration";
@@ -23,10 +24,12 @@ import type {
 } from "@/types/forty-two";
 
 export function Calculator({
+  locale,
   cursus,
   levels,
   projects,
 }: {
+  locale: AppLocale;
   cursus?: FortyTwoCursus;
   levels?: Record<number, FortyTwoLevel>;
   projects?: Record<number, FortyTwoProject>;
@@ -38,14 +41,15 @@ export function Calculator({
       projects={projects}
     >
       <CalculatorStoreProvider>
-        <CalculatorTable />
+        <CalculatorTable locale={locale} />
       </CalculatorStoreProvider>
     </FortyTwoStoreProvider>
   );
 }
 
-function CalculatorTable() {
+function CalculatorTable({ locale }: { locale: AppLocale }) {
   const { entries, getProjects, level } = useCalculatorStore((state) => state);
+  const columns = useMemo(() => getColumns(locale), [locale]);
 
   //biome-ignore lint: The getProjects dependency is not needed here
   const data = useMemo(() => getProjects(), [entries]);
@@ -82,16 +86,24 @@ function CalculatorTable() {
     <>
       <div className="-mt-12 hidden h-12 justify-end pb-1 md:flex">
         <TableAction
+          locale={locale}
           columns={table.getAllColumns().filter((col) => col.getCanHide())}
         />
       </div>
       <div className="border-t md:rounded-md md:border">
         <Table>
-          <DataTableHeader table={table} />
-          <DataTableBody table={table} />
+          <DataTableHeader
+            table={table}
+            locale={locale}
+          />
+          <DataTableBody
+            table={table}
+            locale={locale}
+          />
           <DataTableFooter
             table={table}
             levelEnd={level.end}
+            locale={locale}
           />
         </Table>
       </div>
