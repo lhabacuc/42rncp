@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import type { AppLocale } from "@/lib/i18n";
 import { Progress } from "@/components/ui/progress";
 import { useFortyTwoStore } from "@/providers/forty-two-store-provider";
 import type {
@@ -7,15 +8,51 @@ import type {
   FortyTwoTitle,
   FortyTwoTitleOption,
 } from "@/types/forty-two";
+import Image from "next/image";
+
+import rncp6ApplicativeLogo from "../../../../RNCP-6-APPLICATIVE-DEVELOPMENT.webp";
+import rncp6WebMobileLogo from "../../../../RNCP-6-WEB-AND-MOBILE-DEVELOPMENT.webp";
+import rncp7DataLogo from "../../../../RNCP-7-DATA-AND-DATABASE-ARCHITECTURE.webp";
+import rncp7NetworksLogo from "../../../../RNCP-7-NETWORK-AND-INFORMATION-SYSTEMS.webp";
+
+function getRncpLogo(title: FortyTwoTitle) {
+  if (title.type === "rncp-6" && title.title === "Développement web et mobile") {
+    return rncp6WebMobileLogo;
+  }
+
+  if (title.type === "rncp-6" && title.title === "Développement applicatif") {
+    return rncp6ApplicativeLogo;
+  }
+
+  if (title.type === "rncp-7" && title.title === "Système d'information et réseaux") {
+    return rncp7NetworksLogo;
+  }
+
+  if (
+    title.type === "rncp-7" &&
+    title.title === "Architecture des bases de données et data"
+  ) {
+    return rncp7DataLogo;
+  }
+
+  return null;
+}
 
 interface TitleRequirementProps {
+  locale: AppLocale;
   name: string;
   value: number;
   max: number;
   unit?: string;
 }
 
-function TitleRequirement({ name, value, max, unit }: TitleRequirementProps) {
+function TitleRequirement({
+  locale,
+  name,
+  value,
+  max,
+  unit,
+}: TitleRequirementProps) {
   function formatValue(value: number) {
     if (value > 1000) {
       return `${(value / 1000).toFixed(1).toLocaleString()}K`;
@@ -34,22 +71,29 @@ function TitleRequirement({ name, value, max, unit }: TitleRequirementProps) {
       <Progress
         max={max}
         value={value > max ? max : value}
-        aria-label={`${value} out of ${max} for the ${name.toLowerCase()}`}
+        aria-label={
+          locale === "pt"
+            ? `${value} de ${max} para ${name.toLowerCase()}`
+            : `${value} out of ${max} for ${name.toLowerCase()}`
+        }
       />
     </div>
   );
 }
 
 export interface TitleRequirementsProps {
+  locale: AppLocale;
   title: FortyTwoTitle;
   className?: string;
 }
 
 export function TitleRequirements({
+  locale,
   title,
   className,
 }: TitleRequirementsProps) {
   const { cursus } = useFortyTwoStore((state) => state);
+  const rncpLogo = getRncpLogo(title);
 
   const experiences: FortyTwoProject[] = [];
   for (const project of Object.values(cursus.projects)) {
@@ -66,25 +110,45 @@ export function TitleRequirements({
           tag="h3"
           className="text-xl"
         >
-          Requirements
+          {locale === "pt" ? "Requisitos" : "Requirements"}
         </CardTitle>
       </CardHeader>
-      <CardContent className="grid grid-cols-1 gap-x-6 gap-y-4 md:grid-cols-3">
-        <TitleRequirement
-          name={"Level required"}
-          value={cursus.level}
-          max={title.level}
-        />
-        <TitleRequirement
-          name={"Number of events"}
-          value={cursus.events}
-          max={title.numberOfEvents}
-        />
-        <TitleRequirement
-          name={"Professional experiences"}
-          value={experiences.length}
-          max={title.numberOfExperiences}
-        />
+      <CardContent className="space-y-8">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-4 md:grid-cols-3">
+          <TitleRequirement
+            locale={locale}
+            name={locale === "pt" ? "Nível exigido" : "Level required"}
+            value={cursus.level}
+            max={title.level}
+          />
+          <TitleRequirement
+            locale={locale}
+            name={locale === "pt" ? "Número de eventos" : "Number of events"}
+            value={cursus.events}
+            max={title.numberOfEvents}
+          />
+          <TitleRequirement
+            locale={locale}
+            name={
+              locale === "pt" ? "Experiências profissionais" : "Professional experiences"
+            }
+            value={experiences.length}
+            max={title.numberOfExperiences}
+          />
+        </div>
+
+        {rncpLogo && (
+          <div className="flex items-center justify-center">
+            <div className="relative h-56 w-full max-w-[520px] overflow-hidden rounded-lg border border-border/40 bg-muted/20 p-2 md:h-64">
+              <Image
+                src={rncpLogo}
+                alt="RNCP logo"
+                fill
+                className="object-contain p-4 md:p-6"
+              />
+            </div>
+          </div>
+        )}
       </CardContent>
     </Card>
   );
@@ -120,8 +184,12 @@ function calculateExperience(
 }
 
 export function TitleOptionRequirements({
+  locale,
   option,
-}: { option: FortyTwoTitleOption }) {
+}: {
+  locale: AppLocale;
+  option: FortyTwoTitleOption;
+}) {
   const { cursus } = useFortyTwoStore((state) => state);
 
   let projects = 0;
@@ -138,14 +206,16 @@ export function TitleOptionRequirements({
   return (
     <div className="space-y-4">
       <TitleRequirement
-        name={"Projects"}
+        locale={locale}
+        name={locale === "pt" ? "Projetos" : "Projects"}
         value={projects}
         max={option.numberOfProjects}
       />
 
       {option.experience > 0 && (
         <TitleRequirement
-          name={"Experience"}
+          locale={locale}
+          name={locale === "pt" ? "Experiência" : "Experience"}
           value={experience}
           max={option.experience}
           unit="XP"
