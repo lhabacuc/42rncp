@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import type { AppLocale } from "@/lib/i18n";
 import {
   Carousel,
   CarouselContent,
@@ -11,18 +12,28 @@ import type { FortyTwoTitle, FortyTwoTitleOption } from "@/types/forty-two";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import { TitleOptionRequirements } from "./requirements";
 import { ProjectList } from "./projects";
+import { translateRncpTitle } from "../translations";
 
-function TitleOption({ option }: { option: FortyTwoTitleOption }) {
+function TitleOption({
+  locale,
+  option,
+}: {
+  locale: AppLocale;
+  option: FortyTwoTitleOption;
+}) {
   return (
-    <Card className="min-h-[638px]">
-      <CardHeader className="pb-4">
+    <Card className="min-h-[640px] border-border/60 bg-card/80 shadow-sm">
+      <CardHeader className="space-y-3 pb-4">
         <CardTitle
           tag="h3"
-          className="truncate text-xl"
+          className="line-clamp-2 min-h-12 text-xl"
         >
-          {option.title}
+          {translateRncpTitle(option.title, locale)}
         </CardTitle>
-        <TitleOptionRequirements option={option} />
+        <TitleOptionRequirements
+          locale={locale}
+          option={option}
+        />
       </CardHeader>
       <CardContent className="p-4 md:p-6 md:pt-0">
         <ProjectList projects={option.projects} />
@@ -32,11 +43,12 @@ function TitleOption({ option }: { option: FortyTwoTitleOption }) {
 }
 
 export interface TitleOptionsProps {
+  locale: AppLocale;
   title: FortyTwoTitle;
   className?: string;
 }
 
-export function TitleOptions({ title, className }: TitleOptionsProps) {
+export function TitleOptions({ locale, title, className }: TitleOptionsProps) {
   const options: FortyTwoTitleOption[] = [
     ...title.options,
     {
@@ -61,7 +73,10 @@ export function TitleOptions({ title, className }: TitleOptionsProps) {
             key={option.title}
             className="md:basis-1/2 xl:basis-1/3"
           >
-            <TitleOption option={option} />
+            <TitleOption
+              locale={locale}
+              option={option}
+            />
           </CarouselItem>
         ))}
       </CarouselContent>

@@ -92,7 +92,7 @@ function Project({
     <Collapsible>
       <div
         key={project.id}
-        className="flex min-h-[42px] items-center text-sm"
+        className="flex min-h-[44px] items-start rounded-md px-1 py-1 text-sm transition-colors hover:bg-muted/40"
       >
         <ProjectIcon project={project} />
 
@@ -101,8 +101,8 @@ function Project({
           depth={depth}
         />
 
-        <div>
-          <p className="ml-1 truncate">{project.name}</p>
+        <div className="min-w-0 flex-1">
+          <p className="ml-1 truncate font-medium">{project.name}</p>
           <ProjectExperience project={project} />
         </div>
       </div>
