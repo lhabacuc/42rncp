@@ -13,15 +13,9 @@ WORKDIR /app
 
 ENV NODE_ENV development
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+RUN mkdir -p .next
 
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
-
-COPY --from=deps --chown=nextjs:nodejs /app/node_modules ./node_modules
-COPY --chown=nextjs:nodejs . .
-
-USER nextjs
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
 
 CMD [ "npm", "run", "dev" ]
