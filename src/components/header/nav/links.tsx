@@ -24,5 +24,10 @@ export function getNavLinks(locale: AppLocale): NavLink[] {
       href: "/rncp",
       isProtected: true,
     },
+    {
+      text: locale === "pt" ? "Next Best Project" : "Next Best Project",
+      href: "/next-best-project",
+      isProtected: true,
+    },
   ];
 }
