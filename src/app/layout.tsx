@@ -1,5 +1,8 @@
 import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header";
+import ChatbotWidget from "@/components/chatbot/chatbot-widget";
+import { auth } from "@/auth";
+import { getRequestLocale } from "@/lib/i18n";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import "@/globals.css";
@@ -21,15 +24,17 @@ export const metadata: Metadata = {
   description: "A calculator for the 42 curriculum",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getRequestLocale();
+  const session = await auth();
   const shouldInjectToolbar = process.env.NODE_ENV === "development";
   return (
     <html
-      lang="en"
+      lang={locale}
       suppressHydrationWarning
     >
       <head>
@@ -40,6 +45,7 @@ export default function RootLayout({
         />
       </head>
       <body
+        suppressHydrationWarning
         className={cn(
           "flex min-h-screen flex-col bg-[length:100px_100px] bg-[url('/hero-pattern.svg')] bg-background font-sans antialiased",
           fontSans.variable,
@@ -55,6 +61,7 @@ export default function RootLayout({
             <Header />
             {children}
             <Footer />
+            {session != null && <ChatbotWidget locale={locale} />}
           </StrictMode>
         </ThemeProvider>
 
