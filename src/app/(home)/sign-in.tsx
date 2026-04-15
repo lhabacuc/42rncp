@@ -1,6 +1,7 @@
 import { isDevelopment, signIn } from "@/auth";
 import FortyTwo from "@/components/icons/FortyTwo";
 import { Button } from "@/components/ui/button";
+import { getRequestLocale } from "@/lib/i18n";
 import {
   Card,
   CardContent,
@@ -10,13 +11,17 @@ import {
 } from "@/components/ui/card";
 import { DraftingCompass } from "lucide-react";
 
-export function SignIn() {
+export async function SignIn() {
+  const locale = await getRequestLocale();
+
   return (
     <Card className="w-[350px]">
       <CardHeader>
-        <CardTitle>Welcome</CardTitle>
+        <CardTitle>{locale === "pt" ? "Bem-vindo" : "Welcome"}</CardTitle>
         <CardDescription>
-          Access the calculator with your 42 account.
+          {locale === "pt"
+            ? "Aceda à calculadora com a sua conta da 42."
+            : "Access the calculator with your 42 account."}
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col items-center justify-center space-y-4">
@@ -32,7 +37,7 @@ export function SignIn() {
             className="w-full"
           >
             <FortyTwo className="mr-4 h-6" />
-            Sign in with 42
+            {locale === "pt" ? "Entrar com 42" : "Sign in with 42"}
           </Button>
         </form>
 
@@ -49,7 +54,7 @@ export function SignIn() {
               className="w-full"
             >
               <DraftingCompass className="mr-2 h-6" />
-              Developer sign in
+              {locale === "pt" ? "Entrar como desenvolvedor" : "Developer sign in"}
             </Button>
           </form>
         )}
