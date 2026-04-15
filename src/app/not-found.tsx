@@ -14,9 +14,7 @@ export default function NotFound() {
       <Card className="w-[350px]">
         <CardHeader>
           <CardTitle tag="h1">Not Found</CardTitle>
-          <CardDescription>
-            Could not find the requested resource.
-          </CardDescription>
+          <CardDescription>Could not find the requested resource.</CardDescription>
         </CardHeader>
         <CardContent className="flex items-center justify-center">
           <Button
