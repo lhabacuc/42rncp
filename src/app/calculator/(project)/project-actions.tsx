@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import type { AppLocale } from "@/lib/i18n";
 import { Switch } from "@/components/ui/switch";
 import { useCalculatorStore } from "@/providers/calculator-store-provider";
 import type { CalculatorEntry } from "@/types/forty-two";
@@ -12,7 +13,7 @@ import { track } from "@vercel/analytics";
 
 const LEVEL_REGEX = /^\d{1,2}(\.\d{0,2})?$/;
 
-export function StartLevel() {
+export function StartLevel({ locale }: { locale: AppLocale }) {
   const { level, setLevel } = useCalculatorStore((state) => state);
   const [inputValue, setInputValue] = useState<string | null>(
     level.start.toFixed(2),
@@ -42,15 +43,17 @@ export function StartLevel() {
       onChange={handleInputChange}
       placeholder="1.00"
       className="inline-flex max-w-[64px] flex-none "
-      aria-label="Level"
+      aria-label={locale === "pt" ? "Nível" : "Level"}
     />
   );
 }
 
 export function RemoveProject({
   entry,
+  locale,
 }: {
   entry: CalculatorEntry;
+  locale: AppLocale;
 }) {
   const { removeProject } = useCalculatorStore((state) => state);
 
@@ -66,7 +69,7 @@ export function RemoveProject({
           project: entry.project.name,
         });
       }}
-      aria-label="Remove project"
+      aria-label={locale === "pt" ? "Remover projeto" : "Remove project"}
     >
       <Trash2 className="size-4 transition-colors group-hover:stroke-destructive" />
     </Button>
@@ -75,8 +78,10 @@ export function RemoveProject({
 
 export function ProjectBonus({
   entry,
+  locale,
 }: {
   entry: CalculatorEntry;
+  locale: AppLocale;
 }) {
   const { updateProject } = useCalculatorStore((state) => state);
 
@@ -92,7 +97,7 @@ export function ProjectBonus({
           },
         });
       }}
-      aria-label="Project bonus"
+      aria-label={locale === "pt" ? "Bónus do projeto" : "Project bonus"}
     />
   );
 }

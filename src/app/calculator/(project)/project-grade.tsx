@@ -1,6 +1,7 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
+import type { AppLocale } from "@/lib/i18n";
 import { useCalculatorStore } from "@/providers/calculator-store-provider";
 import type { CalculatorEntry } from "@/types/forty-two";
 import type React from "react";
@@ -9,8 +10,10 @@ import { z } from "zod";
 
 export function ProjectGrade({
   entry,
+  locale,
 }: {
   entry: CalculatorEntry;
+  locale: AppLocale;
 }) {
   const [inputValue, setInputValue] = useState<number | null>(
     entry.project.mark ?? null,
@@ -54,7 +57,7 @@ export function ProjectGrade({
       onChange={handleInputChange}
       placeholder="100"
       className="min-w-[52px] max-w-[100px]"
-      aria-label="Project grade"
+      aria-label={locale === "pt" ? "Nota do projeto" : "Project grade"}
     />
   );
 }
