@@ -1,23 +1,29 @@
 "use client";
 
 import { TableBody, TableCell, TableRow } from "@/components/ui/table";
+import type { AppLocale } from "@/lib/i18n";
 import {
   type Table as TableInstance,
   flexRender,
   type Row,
 } from "@tanstack/react-table";
-import { columns } from "./table-columns";
 import { cn } from "@/lib/utils";
 import { AddProject } from "../(project)/project-add";
 
-function DataTableAddProject() {
+function DataTableAddProject({
+  locale,
+  columnCount,
+}: {
+  locale: AppLocale;
+  columnCount: number;
+}) {
   return (
     <TableRow className="hover:bg-inherit">
       <TableCell
-        colSpan={columns.length}
+        colSpan={columnCount}
         className="h-24 text-center"
       >
-        <AddProject />
+        <AddProject locale={locale} />
       </TableCell>
     </TableRow>
   );
@@ -61,7 +67,11 @@ function DataTableProject<TData>({
 
 export function DataTableBody<TData>({
   table,
-}: { table: TableInstance<TData> }) {
+  locale,
+}: {
+  table: TableInstance<TData>;
+  locale: AppLocale;
+}) {
   return (
     <TableBody>
       {table.getRowModel().rows.map((row) => (
@@ -71,7 +81,10 @@ export function DataTableBody<TData>({
           row={row}
         />
       ))}
-      <DataTableAddProject />
+      <DataTableAddProject
+        locale={locale}
+        columnCount={table.getVisibleFlatColumns().length}
+      />
     </TableBody>
   );
 }
