@@ -11,36 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import type { FortyTwoTitle } from "@/types/forty-two";
-import Image from "next/image";
 import { translateRncpTitle } from "./translations";
-
-import rncp6ApplicativeLogo from "../../../RNCP-6-APPLICATIVE-DEVELOPMENT.webp";
-import rncp6WebMobileLogo from "../../../RNCP-6-WEB-AND-MOBILE-DEVELOPMENT.webp";
-import rncp7DataLogo from "../../../RNCP-7-DATA-AND-DATABASE-ARCHITECTURE.webp";
-import rncp7NetworksLogo from "../../../RNCP-7-NETWORK-AND-INFORMATION-SYSTEMS.webp";
-
-function getRncpLogo(title: FortyTwoTitle) {
-  if (title.type === "rncp-6" && title.title === "Développement web et mobile") {
-    return rncp6WebMobileLogo;
-  }
-
-  if (title.type === "rncp-6" && title.title === "Développement applicatif") {
-    return rncp6ApplicativeLogo;
-  }
-
-  if (title.type === "rncp-7" && title.title === "Système d'information et réseaux") {
-    return rncp7NetworksLogo;
-  }
-
-  if (
-    title.type === "rncp-7" &&
-    title.title === "Architecture des bases de données et data"
-  ) {
-    return rncp7DataLogo;
-  }
-
-  return null;
-}
 
 interface MainSelectorProps {
   locale: AppLocale;
@@ -59,7 +30,6 @@ function MainSelector({
     <div className="hidden w-full grid-cols-4 gap-4 lg:grid">
       {titles.map((title) => {
         const translatedTitle = translateRncpTitle(title.title, locale);
-        const logo = getRncpLogo(title);
         const isActive = activeTitle.title === title.title;
         return (
         <Button
@@ -76,16 +46,6 @@ function MainSelector({
           <h2 className="line-clamp-2 max-h-[44px] flex-1 text-left text-balance">
             {translatedTitle}
           </h2>
-          {logo && (
-            <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-sm border border-border/40 bg-background/30">
-              <Image
-                src={logo}
-                alt={translatedTitle}
-                fill
-                className="object-cover"
-              />
-            </div>
-          )}
           <Badge
             variant={
               isActive ? "secondary" : "default"
