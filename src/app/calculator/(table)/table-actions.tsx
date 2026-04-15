@@ -14,13 +14,25 @@ import { Ellipsis } from "lucide-react";
 import type { Row } from "@tanstack/react-table";
 import { ChevronsUpDownIcon, Trash2 } from "lucide-react";
 import { useCalculatorStore } from "@/providers/calculator-store-provider";
+import type { AppLocale } from "@/lib/i18n";
 
 export function TableAction<TData>({
+  locale,
   columns,
 }: {
+  locale: AppLocale;
   columns: ColumnInstance<TData>[];
 }) {
   const { resetProjects } = useCalculatorStore((state) => state);
+  const labelByColumnId: Record<string, string> = {
+    name: locale === "pt" ? "Nome" : "Name",
+    mark: locale === "pt" ? "Nota" : "Mark",
+    bonus: locale === "pt" ? "Bónus da Coalizão" : "Coalition Bonus",
+    "base experience": locale === "pt" ? "Experiência Base" : "Base Experience",
+    "gained experience":
+      locale === "pt" ? "Experiência Ganha" : "Gained Experience",
+    level: locale === "pt" ? "Nível" : "Level",
+  };
 
   return (
     <DropdownMenu>
@@ -43,7 +55,7 @@ export function TableAction<TData>({
             <Trash2 className="size-4 transition-colors group-hover:stroke-destructive" />
           </span>
           <span className="transition-colors group-hover:text-destructive">
-            Reset projects
+            {locale === "pt" ? "Repor projetos" : "Reset projects"}
           </span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
@@ -54,7 +66,7 @@ export function TableAction<TData>({
             checked={column.getIsVisible()}
             onCheckedChange={(value) => column.toggleVisibility(value)}
           >
-            {column.id}
+            {labelByColumnId[column.id] ?? column.id}
           </DropdownMenuCheckboxItem>
         ))}
       </DropdownMenuContent>
@@ -62,14 +74,20 @@ export function TableAction<TData>({
   );
 }
 
-export function ToggleExpand<TData>({ row }: { row: Row<TData> }) {
+export function ToggleExpand<TData>({
+  row,
+  locale,
+}: {
+  row: Row<TData>;
+  locale: AppLocale;
+}) {
   return (
     <Button
       variant="ghost"
       size="icon"
       className="group"
       onClick={row.getToggleExpandedHandler()}
-      aria-label="Expand row"
+      aria-label={locale === "pt" ? "Expandir linha" : "Expand row"}
     >
       <ChevronsUpDownIcon className="size-4" />
     </Button>
