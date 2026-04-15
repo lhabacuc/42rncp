@@ -7,8 +7,8 @@ import {
   getExperience,
   getLevel,
 } from "@/lib/forty-two/forty-two-calculator";
-import { useFortyTwoStore } from "@/providers/forty-two-store-provider";
 import type { FortyTwoProject, CalculatorEntry } from "@/types/forty-two";
+import type { FortyTwoLevel } from "@/types/forty-two";
 
 export type CalculatorState = {
   level: {
@@ -36,11 +36,15 @@ export type CalculatorActions = {
 
 export type CalculatorStore = CalculatorState & CalculatorActions;
 
-export const initCalculatorStore = (): CalculatorState => {
-  const {
-    cursus: { level },
-    levels,
-  } = useFortyTwoStore((state) => state);
+export type CalculatorStoreInitProps = {
+  level: number;
+  levels: Record<number, FortyTwoLevel>;
+};
+
+export const initCalculatorStore = ({
+  level,
+  levels,
+}: CalculatorStoreInitProps): CalculatorState => {
   const experience = getExperience(level, levels);
 
   return {
@@ -57,10 +61,11 @@ export const initCalculatorStore = (): CalculatorState => {
   };
 };
 
-export const createCalculatorStore = (initState: CalculatorState) => {
+export const createCalculatorStore = (
+  initState: CalculatorState,
+  levels: Record<number, FortyTwoLevel>,
+) => {
   return create<CalculatorStore>()((set, get) => {
-    const { levels } = useFortyTwoStore((state) => state);
-
     // Helper to recalculate experience & levels
     function recalculateLevels() {
       const state = get();
