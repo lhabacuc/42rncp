@@ -5,6 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { getRequestLocale } from "@/lib/i18n";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getFortyTwoCursus } from "@/lib/forty-two/cursus";
 import { getFortyTwoProjects } from "@/lib/forty-two/forty-two-projects";
@@ -38,17 +39,23 @@ async function TitlesProvider({
   );
 }
 
-export default function TitlesLayout({
+export default async function TitlesLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getRequestLocale();
+
   return (
     <main className="@container flex grow items-start justify-center p-4 md:p-12 lg:p-24">
       <Card className="@max-[1400px]:w-full @min-[1400px]:w-[1400px] bg-card/5 backdrop-blur-sm">
         <CardHeader>
           <CardTitle tag="h1">RNCP</CardTitle>
-          <CardDescription>Track your RNCP progress.</CardDescription>
+          <CardDescription>
+            {locale === "pt"
+              ? "Acompanhe o seu progresso no RNCP."
+              : "Track your RNCP progress."}
+          </CardDescription>
         </CardHeader>
         <CardContent className="p-4 md:p-6">
           <Suspense fallback={<TitlesSkeleton />}>
