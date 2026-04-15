@@ -1,13 +1,15 @@
 "use client";
 
 import type { CalculatorEntry } from "@/types/forty-two";
+import type { AppLocale } from "@/lib/i18n";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ProjectBonus, RemoveProject } from "../(project)/project-actions";
 import { ProjectGrade } from "../(project)/project-grade";
 import { CornerDownRightIcon } from "lucide-react";
 import { ToggleExpand } from "./table-actions";
 
-export const columns: ColumnDef<CalculatorEntry>[] = [
+export function getColumns(locale: AppLocale): ColumnDef<CalculatorEntry>[] {
+  return [
   {
     id: "remove",
     enableHiding: false,
@@ -15,7 +17,12 @@ export const columns: ColumnDef<CalculatorEntry>[] = [
       if (row.depth > 0) {
         return null;
       }
-      return <RemoveProject entry={row.original} />;
+      return (
+        <RemoveProject
+          entry={row.original}
+          locale={locale}
+        />
+      );
     },
     meta: {
       className: "w-8 md:w-14 px-0 md:px-1",
@@ -28,7 +35,12 @@ export const columns: ColumnDef<CalculatorEntry>[] = [
       if (!row.getCanExpand()) {
         return null;
       }
-      return <ToggleExpand row={row} />;
+      return (
+        <ToggleExpand
+          row={row}
+          locale={locale}
+        />
+      );
     },
     meta: {
       className: "w-8 md:w-10 px-0 md:px-1",
@@ -36,7 +48,7 @@ export const columns: ColumnDef<CalculatorEntry>[] = [
   },
   {
     id: "name",
-    header: "Name",
+    header: locale === "pt" ? "Nome" : "Name",
     accessorKey: "project.name",
     enableHiding: false,
     cell: ({ row }) => {
@@ -56,11 +68,16 @@ export const columns: ColumnDef<CalculatorEntry>[] = [
   },
   {
     id: "mark",
-    header: "Mark",
+    header: locale === "pt" ? "Nota" : "Mark",
     enableHiding: false,
     cell: ({ row }) => {
       const entry = row.original;
-      return <ProjectGrade entry={entry} />;
+      return (
+        <ProjectGrade
+          entry={entry}
+          locale={locale}
+        />
+      );
     },
     meta: {
       className: "max-w-[60px] md:max-w-[100px] xl:max-w-none items-center",
@@ -68,11 +85,16 @@ export const columns: ColumnDef<CalculatorEntry>[] = [
   },
   {
     id: "bonus",
-    header: "Coalition Bonus",
+    header: locale === "pt" ? "Bónus da Coalizão" : "Coalition Bonus",
     enableHiding: false,
     cell: ({ row }) => {
       const entry = row.original;
-      return <ProjectBonus entry={entry} />;
+      return (
+        <ProjectBonus
+          entry={entry}
+          locale={locale}
+        />
+      );
     },
     meta: {
       className: "max-w-[60px] md:max-w-[100px] xl:max-w-none items-center",
@@ -80,7 +102,7 @@ export const columns: ColumnDef<CalculatorEntry>[] = [
   },
   {
     id: "base experience",
-    header: "Base Experience",
+    header: locale === "pt" ? "Experiência Base" : "Base Experience",
     cell: ({ row }) => {
       const entry = row.original;
       return <>{entry.project.experience?.toFixed(0) ?? 0}</>;
@@ -92,7 +114,7 @@ export const columns: ColumnDef<CalculatorEntry>[] = [
   },
   {
     id: "gained experience",
-    header: "Gained Experience",
+    header: locale === "pt" ? "Experiência Ganha" : "Gained Experience",
     cell: ({ row }) => {
       const entry = row.original;
       return <>{entry.experience.toFixed(0)}</>;
@@ -104,7 +126,7 @@ export const columns: ColumnDef<CalculatorEntry>[] = [
   },
   {
     id: "level",
-    header: "Level",
+    header: locale === "pt" ? "Nível" : "Level",
     cell: ({ row }) => {
       const entry = row.original;
       return <>{entry.level.toFixed(2)}</>;
@@ -114,4 +136,5 @@ export const columns: ColumnDef<CalculatorEntry>[] = [
         "max-w-[44px] md:max-w-[80px] lg:max-w-none text-right text-clip",
     },
   },
-];
+  ];
+}
