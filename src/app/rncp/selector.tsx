@@ -36,7 +36,7 @@ function MainSelector({
           key={title.title}
           value={title.title}
           variant={isActive ? "default" : "secondary"}
-          className="relative flex h-[84px] items-center justify-between gap-3 overflow-hidden px-4 py-2 text-left transition-transform hover:-translate-y-0.5"
+          className="relative flex h-[64px] items-center justify-between gap-3 overflow-hidden px-4 py-2 text-left transition-transform hover:-translate-y-0.5"
           data-state={isActive ? "active" : "inactive"}
           onClick={() => setActiveTitle(title)}
           aria-label={`${
